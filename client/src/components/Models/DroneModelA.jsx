@@ -2,12 +2,12 @@ import React, { useEffect, useRef } from 'react';
 import * as THREE from 'three';
 import { OBJLoader } from 'three/examples/jsm/loaders/OBJLoader';
 import { MTLLoader } from 'three/examples/jsm/loaders/MTLLoader';
-import gsap from 'gsap'; // Import GSAP for smooth animation
+import gsap from 'gsap'; // GSAP for smooth animations
 
 function DroneModelA({ scale = 10 }) {
   const mountRef = useRef(null);
-  const sceneRef = useRef(null); // Store scene reference
-  const droneRef = useRef(null); // Reference to the drone model
+  const sceneRef = useRef(null);
+  const droneRef = useRef(null);
 
   useEffect(() => {
     if (sceneRef.current) return; // Prevent duplicate scene creation
@@ -28,16 +28,21 @@ function DroneModelA({ scale = 10 }) {
     }
 
     // Lighting
-    const ambientLight = new THREE.AmbientLight(0x3399ff, 0.7);
+    const ambientLight = new THREE.AmbientLight(0x3399ff, 2);
     scene.add(ambientLight);
 
     const directionalLight = new THREE.DirectionalLight(0xffffff, 2);
     directionalLight.position.set(5, 5, 5);
     scene.add(directionalLight);
 
-    // Load OBJ Model (Prevent Duplicate)
-    if (!scene.getObjectByName('DroneModel')) {
+    // Load Material (MTL) first
+    const mtlLoader = new MTLLoader();
+    mtlLoader.load('/models/drone_compacked.mtl', (materials) => {
+      materials.preload(); // Ensure materials are ready
+
       const objLoader = new OBJLoader();
+      objLoader.setMaterials(materials); // Apply materials to OBJ
+
       objLoader.load('/models/drone_compacked.obj', (object) => {
         object.name = 'DroneModel';
         object.scale.set(scale, scale, scale);
@@ -56,7 +61,7 @@ function DroneModelA({ scale = 10 }) {
         // Animate Rotation Smoothly
         gsap.to(object.rotation, {
           x: THREE.MathUtils.degToRad(10),
-          y: THREE.MathUtils.degToRad(-60), // Rotating to new position
+          y: THREE.MathUtils.degToRad(-40),
           z: THREE.MathUtils.degToRad(90),
           duration: 3, // Smooth transition in 3 seconds
           ease: "power2.inOut",
@@ -71,7 +76,7 @@ function DroneModelA({ scale = 10 }) {
         };
         animate();
       });
-    }
+    });
 
     return () => {
       if (mountRef.current) {

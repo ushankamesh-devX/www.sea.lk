@@ -12,8 +12,9 @@ function Footer() {
         </div>
         <div className="flex mt-8 flex-col md:flex-row md:justify-between">
           <p className="w-full md:w-2/3 text-gray-400">
-            To ensure that all Wikipedia content is verifiable, anyone may
-            question an uncited claim. If your work has been tagged.
+          At Smart Era of Aviation (S.E.A), we are committed to pushing the boundaries of drone technology for security, research, and beyond. Whether you have inquiries about our Octopus Drone, need technical support, or want to collaborate on an innovative project, we are here to assist you.
+
+Our team is ready to provide expert guidance, product demonstrations, and customized drone solutions tailored to your needs. Reach out to us, and let’s explore how our advanced aerial systems can support your goals.
           </p>
           <div className="w-44 pt-6 md:pt-0">
             <a
@@ -69,7 +70,7 @@ function Footer() {
           </div>
           <hr className="border-gray-600" />
           <p className="w-full text-center my-12 text-gray-600">
-            Copyright © 2025 Besnik Creative
+            Copyright © 2025 www.sea.lk
           </p>
         </div>
       </div>

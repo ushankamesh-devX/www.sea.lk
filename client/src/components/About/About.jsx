@@ -1,22 +1,27 @@
 import React from "react";
 import img from "../../assets/about.png";
 import { FaCheckCircle } from "react-icons/fa";
+import rim from "../../assets/rim.png";
 
 function About() {
     const products = [
-        "First Macintosh computer",
-        "iMac",
-        "iPod",
-        "iPhone",
-        "Apple Watch",
+        "Vision: To be the global leader in advanced drone technology, shaping the future of autonomous aviation.",
+        "To create highly efficient and technologically advanced drones.",
+        "To provide innovative solutions for surveillance, disaster management, and research applications.",
+        "To continuously improve performance, durability, and automation in aerial systems.",
+        ,
       ];
   return (
-    <div  className=" max-w-screen-lg mt-28 mb-40">
-    <div className=" flex flex-row">
+    <div  className=" max-w-screen-lg mt-28 mb-40 scale">
+      <div className=" ">
+      <img src={rim} alt="" className=" absolute w-[3000px] rotate-180  -translate-x-64 translate-y-96  blur-2xl" />
+      <img src={rim} alt="" className=" absolute w-[3000px]  -translate-x-64 -translate-y-28  blur-2xl" />
+      </div>
+    <div className=" flex flex-row items-center scale-90">
         <img
             src={img}
             alt=""
-            className=" opacity-50 w-[400px]"
+            className=" opacity-50 size-[800px] rounded-full translate-y-16  "
         />
         <div className="text-white">
        <h1 className="font-bold text-8xl -translate-xd-28 translate-y-20 pl-10"> About Us</h1>
